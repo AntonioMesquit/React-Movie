@@ -5,6 +5,7 @@ import { Header } from "../../components/header"
 import { Tag } from "../../components/tag"
 import { Stars } from "../../components/stars"
 import { FiClock } from 'react-icons/fi'
+import { Link } from "react-router-dom"
 
 
 export default function Details() {
@@ -13,7 +14,9 @@ export default function Details() {
       <Header />
 
       <Content>
-        <Back title="Voltar" />
+        <Link to="/">
+        <Back title="Voltar"/>
+        </Link>
         <div className="titleMovie">
           <h1>Interestellar</h1>
           <Stars rating={4}/>

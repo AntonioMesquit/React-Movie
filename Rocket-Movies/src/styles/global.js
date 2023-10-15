@@ -7,13 +7,13 @@ export default createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Slab', serif;
 
 
 }
 body{
     -webkit-font-smoothing: antialiased;
-    background-color: ${({theme}) => theme.COLORS.BACKGROUND_600};
+    background-color: ${({theme}) => theme.COLORS.BACKGROUND_800};
     color: ${({theme}) => theme.COLORS.WHITE    };  
 
     
@@ -30,7 +30,7 @@ button, a{
     transition: filter 0.2s;
 }
 button:hover, a:hover{
-    filter: brightness(0.5);
+    filter: brightness(0.8);
 }
 
 

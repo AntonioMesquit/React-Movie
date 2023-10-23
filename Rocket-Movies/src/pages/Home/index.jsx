@@ -19,13 +19,10 @@ export default function Home(){
     <main>
         <div className="ifos">
             <h1>Meus Filmes</h1>
-              
-          
            <button onClick={create}>
             <FiPlus/>
             Adicionar Filme
            </button>
-     
         </div>
         <div className="linhar">
         <Section>

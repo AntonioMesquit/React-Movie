@@ -1,7 +1,10 @@
 import { Container, Alinhamento} from "./style";
 import { Input } from "../input";
 import { Link } from "react-router-dom"
+import { useAuth } from "../../hooks/auth";
 export function Header(){
+  const {signOut, user} = useAuth()
+ 
     return(
     <Container>
      
@@ -9,10 +12,10 @@ export function Header(){
 
      <Input placeholder="Pesquise pelo titulo..."/>
      
-     <Alinhamento>
+     <Alinhamento>  
         <div>
-        <h1>Antonio Mesquita</h1>
-        <p>sair</p>
+        <h1>{user.name}</h1>
+        <p onClick={signOut}>sair</p>
         </div>
    
    <Link to="/profile">

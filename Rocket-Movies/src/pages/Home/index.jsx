@@ -6,8 +6,10 @@ import { Container } from "./style"
 import {FiPlus} from 'react-icons/fi'
 import {Stars} from '../../components/stars'
 import { Link, useNavigate } from "react-router-dom"
+import { useAuth } from "../../hooks/auth"
 
 export default function Home(){
+   
     const navigate = useNavigate()
     function create(){
    navigate("/new")
@@ -41,7 +43,7 @@ export default function Home(){
         {{title: "React"
          , 
          rating: 3,
-         description: "teste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,teste,",
+         description: "teste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,testeteste,teste,*/teste,teste,testeteste,teste,teste,teste,testeteste,teste,teste,teste,teste,",
          tags: [
             {id: '1', name: 'Acao'},
             {id: '2', name: 'Comedia'}

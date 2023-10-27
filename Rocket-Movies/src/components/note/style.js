@@ -9,7 +9,7 @@ border: none;
 border-radius: 10px;
 padding: 22px;
 margin-bottom: 16px;
-width: 1600px;
+max-width: 1600px;
 word-wrap: break-word;  
 > h1{
     flex: 1;

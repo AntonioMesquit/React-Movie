@@ -41,8 +41,16 @@ width: 350px;
    display: flex;
    justify-content: right;
    font-weight: 400;
-   color: ${({theme}) => theme.COLORS.GREY_300};;
+   color: ${({theme}) => theme.COLORS.GREY_300};
+   cursor: pointer;
+   transition: 0.5s;
+
+   &:hover{
+    transform: scale(1.05);
+   transition: all .5s linear;
+   }
 }
+
 }
 
 

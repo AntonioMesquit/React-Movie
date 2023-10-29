@@ -1,15 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-width: 100vw;
-display: grid;
-height: 100vh;
-grid-template-rows: 120px auto;
-grid-template-areas: 
-"header"
-"content";
+width: 98vw;
+margin-left: 10px;
 
-
+grid-area: home;
+overflow-y: auto;
 .linhar{
     display: flex;
     flex-direction: column;

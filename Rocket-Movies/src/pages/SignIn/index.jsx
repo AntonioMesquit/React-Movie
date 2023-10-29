@@ -24,7 +24,7 @@ function handleSingIn(){
 
         <Form>
           <Input icon={FiMail} placeholder="E-mail" onChange={e => setEmail(e.target.value)} />
-          <Input icon={FiLock} placeholder="Senha" onChange={e => setPassword(e.target.value)}/>
+          <Input icon={FiLock} placeholder="Senha" type ="password"onChange={e => setPassword(e.target.value)}/>
           <Button title="Entrar" onClick={handleSingIn}/>
           
         </Form>

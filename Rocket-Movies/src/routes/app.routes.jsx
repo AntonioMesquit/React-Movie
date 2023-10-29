@@ -1,7 +1,7 @@
 import {Routes, Route} from 'react-router-dom'
 
 import New from '../pages/New'
-import Home from '../pages/Home'
+import Home from '../pages/Home2'
 import Details from '../pages/Details'
 import Profile from '../pages/Profile'
 

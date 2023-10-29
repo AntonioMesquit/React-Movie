@@ -37,7 +37,7 @@ width: 350px;
 
 }
 
->p {
+>button {
    display: flex;
    justify-content: right;
    font-weight: 400;

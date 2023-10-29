@@ -17,7 +17,15 @@ body{
     color: ${({theme}) => theme.COLORS.WHITE    };  
 
     
-
+ &::-webkit-scrollbar{
+    width: 10px;
+    padding-top: 10px;
+}
+&::-webkit-scrollbar-thumb{
+    width: 10px;
+    background-color: ${({theme}) => theme.COLORS.PINK};
+    border-radius: 20px;
+}
 }
 a{
     text-decoration: none;

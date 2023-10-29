@@ -6,45 +6,99 @@ import { Tag } from "../../components/tag"
 import { Stars } from "../../components/stars"
 import { FiClock } from 'react-icons/fi'
 import { Link } from "react-router-dom"
-
+import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { api } from "../../services/api"
+import { useAuth } from "../../hooks/auth"
 
 export default function Details() {
+
+  const [data, setData] = useState([])
+  const [dataUser, setDataUser] = useState([])
+  const [notes, setNotes] = useState([]);
+  const [dia, setDia] = useState("");
+  const [hora, setHora] = useState("");
+  const [minuto, setMinuto] = useState("");
+  const [mess, setMess] = useState("");
+  const [ano, setAno] = useState("");
+  const params = useParams()
+  const { user } = useAuth();
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}files/${user.avatar}` : avatarPlaceholder;
+
+  useEffect(() => {
+    async function fetchNotes(){
+      const response = await api.get(`notes/${params.id}`)
+      
+      setData(response.data)
+     
+      const dataAtual = response.data.created_at
+      
+      const [ano, diae] = dataAtual.split(" ")
+      const [anos, mes, dias] = ano.split("-") 
+      const [lixo , anoFormatad] = anos.split("0")
+      setAno(anoFormatad)
+      setDia(dias)
+      setMess(mes)
+      const [horas,minutos,segundo] = diae.split(":")
+      const horaCorreta = (Number(horas) - 3)
+      setHora(horaCorreta)
+      setMinuto(minutos)
+
+
+
+
+      console.log(horaCorreta)
+      
+    }
+   
+    
+    fetchNotes()
+      }, [])
+
+    
   return (
     <Container>
       <Header />
-
+{
+  data && 
       <Content>
         <Link to="/">
         <Back title="Voltar"/>
         </Link>
         <div className="titleMovie">
-          <h1>Interestellar</h1>
-          <Stars rating={4}/>
+          <h1>{data.title}</h1>
+          <Stars rating={data.rating}/>
 
         </div>
         <div className="infos">
-          <img src="https://github.com/AntonioMesquit.png" alt="Antonio Mesquit" />
-          <p>Por Antonio Mesquita</p>
+          <img src={avatarUrl} alt={user.name} />
+          <p>{user.name}</p>
           <p className="ico"><FiClock /></p>
-          <p>23/05/22 às 08:00</p>
-
+          <p>{`${dia}/${mess}/${ano} às ${hora}:${minuto}` }</p>
+         
         </div>
 
-
+      {
+        data.tags &&
         <div className="tags">
-          <Tag title="Ficcao Cientifica" />
-          <Tag title="Drama" />
-          <Tag title="Familia" />
-        </div>
-        
-        <p className="text-user">
-        Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições de sobrevivência para a espécie humana. As "missões Lázaro" enviadas anos antes identificaram três planetas potencialmente habitáveis orbitando o buraco negro Gargântua: Miller, Edmunds e Mann – nomeados em homenagem aos astronautas que os pesquisaram. Brand recruta Cooper para pilotar a nave espacial Endurance e recuperar os dados dos astronautas; se um dos planetas se mostrar habitável, a humanidade irá seguir para ele na instalação da NASA, que é na realidade uma enorme estação espacial. A partida de Cooper devasta Murphy.
+          {
+            data.tags.map(tag => (
+              <Tag
+              key={String(tag.id)}
+              title={tag.name}
 
-        Além de Cooper, a tripulação da Endurance é formada pela bióloga Amelia, filha de Brand; o cientista Romilly, o físico planetário Doyle, além dos robôs TARS e CASE. Eles entram no buraco de minhoca e se dirigem a Miller, porém descobrem que o planeta possui enorme dilatação gravitacional temporal por estar tão perto de Gargântua: cada hora na superfície equivale a sete anos na Terra. Eles entram em Miller e descobrem que é inóspito já que é coberto por um oceano raso e agitado por ondas enormes. Uma onda atinge a tripulação enquanto Amelia tenta recuperar os dados de Miller, matando Doyle e atrasando a partida. Ao voltarem para a Endurance, Cooper e Amelia descobrem que 23 anos se passaram.
-        Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições de sobrevivência para a espécie humana. As "missões Lázaro" enviadas anos antes identificaram três planetas potencialmente habitáveis orbitando o buraco negro Gargântua: Miller, Edmunds e Mann – nomeados em homenagem aos astronautas que os pesquisaram. Brand recruta Cooper para pilotar a nave espacial Endurance e recuperar os dados dos astronautas; se um dos planetas se mostrar habitável, a humanidade irá seguir para ele na instalação da NASA, que é na realidade uma enorme estação espacial. A partida de Cooper devasta Murphy.
+              />
+            ))
+         
+        }
+        </div>
+        }
+        <p className="text-user">
+        {data.description}
 
         </p>
       </Content>
+    }
     </Container>
 
   )

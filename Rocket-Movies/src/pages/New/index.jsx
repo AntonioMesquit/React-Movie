@@ -8,6 +8,8 @@ import { FiArrowLeft } from "react-icons/fi"
 import { useState } from "react"
 import { api } from "../../services/api"
 import { useNavigate } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function New(){
    const [title, setTitle] = useState("")
@@ -31,16 +33,29 @@ export default function New(){
    async function handleNewNote(){
 
       if(!title){
-         return alert("Adicione um titulo!")
+         return toast.error("Adicione um titulo!" , {
+            theme: "dark"
+         })
       }
       if(!rating || rating < 1 || rating > 5){
-         return alert("A nota so pode ser entre 1 a 5")
+         return toast.error("A nota so pode ser entre 1 a 5" , {
+            theme: "dark"
+         })
       }
       if(!description){
-         return alert("Adicione alguma descricao!")
+         return toast.error("Adicione alguma descricao!" , {
+            theme: "dark"
+         })
       }
       if(newTag){
-         return alert("Voce tentou adicionar uma tag, mas esqueceu de clicar no botao de adicionar")
+         return toast.error("Voce tentou adicionar uma tag, mas esqueceu de clicar no botao de adicionar" , {
+            theme: "dark"
+         })
+      }
+      if(tags.length === 0){
+         return toast.error("Adicione pelo menos uma tag" , {
+            theme: "dark"
+         })
       }
      
       await api.post("notes" , {
@@ -50,12 +65,16 @@ export default function New(){
          rating,
 
       })
-      alert("nota criada com sucesso!")
+      toast.success("nota criada com sucesso!" , {
+         theme: "dark"
+      })
       navigate("/")
    
    }
    function handleDescartNote(){
-      alert("Nota descartada")
+      toast.success("Nota descartada" , {
+         theme: "dark"
+      })
       navigate("/")
    }
    

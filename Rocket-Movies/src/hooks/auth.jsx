@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect} from "react";
 import { api } from "../services/api";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AuthContext = createContext({})
 
@@ -19,14 +21,29 @@ function AuthProvider({children}){
            localStorage.setItem("@rocketmovies:user" , JSON.stringify(user))
            localStorage.setItem("@rocketmovies:token" , token)
            //adicionar token e usuario no local storage
+           toast.success("Usuario autenticado com sucesso!" , {
+            theme: "dark"
+           })
 
 
         }catch(error){
              if(error.response){
-                alert(error.response.data.message)
+                toast.error(error.response.data.message, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    });
+                    
              }
              else{
-                alert("nao foi possivel entrar")
+                toast.error("nao foi possivel entrar" , {
+                    theme: "dark"
+                })
              }
         }
     }
@@ -49,15 +66,26 @@ function AuthProvider({children}){
         localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
         
         setData({user, token: user.data})
-        alert("perfil atualizado com sucesso!")
+        toast.success("perfil atualizado com sucesso!" , {
+            theme: "dark"
+        })
 
 
     }catch(error){
         if(error.response){
-           alert(error.response.data.message)
+            toast.error(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         }
         else{
-           alert("nao foi possivel entrar")
+           toast.error("nao foi possivel entrar")
         }
    }
    }
@@ -82,6 +110,7 @@ function AuthProvider({children}){
          signOut,
          updateProfile,
          }}>
+         <ToastContainer />
         {children}
         </AuthContext.Provider>
     )

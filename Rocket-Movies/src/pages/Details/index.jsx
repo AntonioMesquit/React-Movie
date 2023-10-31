@@ -46,8 +46,6 @@ export default function Details() {
 
 
 
-
-      console.log(horaCorreta)
       
     }
    

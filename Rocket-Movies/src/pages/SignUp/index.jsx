@@ -7,6 +7,8 @@ import { Button } from "../../components/button";
 import { Back } from "../../components/Back";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export  default function SignUp() {
 
@@ -22,16 +24,16 @@ export  default function SignUp() {
  }
  api.post("/users" , {name,email,password})
  .then(() => {
-  alert("Usuario cadastrado com sucesso!")
+  toast.success("Usuario cadastrado com sucesso!")
   navigate("/")
  })
  .catch(
   error => {
     if(error.response){
-      alert(error.response.data.message)
+      toast.error(error.response.data.message)
     }
     else{
-      alert("Nao foi possivel cadastrar")
+      toast.error("Nao foi possivel cadastrar")
     }
   }
  )
@@ -41,6 +43,7 @@ export  default function SignUp() {
 
   return (
     <Container>
+      <ToastContainer theme="dark"/>
       <Content>
         <h1>RocketMovies</h1>
         <p>Aplicação para acompanhar tudo que assistir.</p>

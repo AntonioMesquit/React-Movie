@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.button`
 display: flex;
 flex-direction: column;
-
 background-color: rgba(255, 133, 155, 0.05);
 border: none;
 border-radius: 10px;

@@ -4,11 +4,12 @@ export const Container = styled.header`
 grid-area: header;
 width: 100%;
 height: 116px;
+overflow-y: hidden;
 padding: 24px 123px 24px 123px;
 display: flex;
 align-items: center;
 justify-content: center;
-gap: 64px;
+gap: 34px;
 background-color: ${({theme}) => theme.COLORS.BACKGROUND_800};
 border-bottom: 1.5px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
 
@@ -24,7 +25,14 @@ border-bottom: 1.5px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
 
 }
 
-
+@media screen and (max-width: 768px) {
+    flex-direction: column;
+    height: 256px;
+    align-items: center;
+    padding: 0;
+    padding-inline: 20px;
+   
+}
 `
 export const Alinhamento = styled.div`
 display: flex;
@@ -67,5 +75,11 @@ button{
     border: none;
     outline: none;
 }
+
+@media screen and (max-width: 768px) {
+    justify-content: center;
+  
+}
+
 `
 

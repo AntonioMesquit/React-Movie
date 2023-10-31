@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-width: 98vw;
-margin-left: 10px;
+width: 100vw;
 
 grid-area: home;
 overflow-y: auto;
@@ -12,7 +11,7 @@ overflow-y: auto;
 }
 > main{
 grid-area: content;
-width: 100%;
+width: 95%;
 margin-top: 30px;
 padding: 0px 106px 0px 123px; 
 overflow-y: auto;
@@ -55,5 +54,12 @@ overflow-y: auto;
 
 }
 
+@media screen and (max-width: 768px) {
+    
 
+    > main{
+        padding: 0;
+        padding-inline: 20px;
+    }
+}   
 `

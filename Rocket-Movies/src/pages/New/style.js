@@ -11,7 +11,7 @@ grid-template-areas:
 
 `
 export const Content = styled.div`
-margin: 40px 106px 85px 123px;
+margin: 100px 106px 85px 123px;
 
 > main{
 grid-area: content;
@@ -77,6 +77,13 @@ margin-bottom: 24px;
    
 
 }
+}
+@media screen and (max-width: 768px) {
+    margin: 0;
+    padding: 20px;
+  
+
+    
 }
 `
 export const Form = styled.div`

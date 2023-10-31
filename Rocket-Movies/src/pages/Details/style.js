@@ -4,7 +4,7 @@ export const Container = styled.div`
 display: grid;
 width: 100%;
 height: 100vh;
-grid-template-rows: 105px auto;
+grid-template-rows: 300px auto;
 grid-template-areas:
 "header"
 "content";
@@ -13,7 +13,7 @@ grid-template-areas:
 export const Content = styled.div`
 grid-area: content;
 margin-top: 40px;
-width: 80%;
+width: 70%;
 margin-left: 123px;
 margin-right: 106px;
 overflow-y: auto;
@@ -78,4 +78,8 @@ p{
     white-space: pre-line;
 }
 
+
+@media screen and (max-width: 768px) {
+    margin: 20px 20px 0px 20px;
+}  
 `

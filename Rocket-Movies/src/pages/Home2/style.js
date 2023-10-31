@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 90vw;
+  width: 100vw;
   display: grid;
   grid-template-rows: auto auto;
   grid-template-areas: "header" "home";

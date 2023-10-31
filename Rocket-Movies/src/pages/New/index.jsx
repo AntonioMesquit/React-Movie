@@ -81,7 +81,7 @@ export default function New(){
     return(
       
         <Container>
-            <Header/>
+       
 
             <Content>
             <main>
